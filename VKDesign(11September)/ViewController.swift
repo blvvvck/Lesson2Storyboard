@@ -27,7 +27,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var audioCount: UIButton!
     @IBOutlet weak var documentsCount: UIButton!
     @IBOutlet weak var giftsCount: UIButton!
-   
+    
+    let navigationBarColor = UIColor.init(red: 89/255.0, green: 125/255.0, blue: 163/255.0, alpha: 1.0)
+    let borderColor = UIColor.init(red: 184/255.0, green: 184/255.0, blue:184/255.0, alpha: 1.0).cgColor
+    let surnameArray = ["Ivanov","Petrov","Sidorov"]
+    let nameArray = ["Ivan", "Anton", "Vlad"]
+    let ageArray = ["18 years old,", "21 years old,", "35 years old,"]
+    let locationArray = ["Kirov", "Kazan", "Moscow"]
+    let borderThickness : CGFloat = 0.5
+    let avatarCornersMultiply : CGFloat = 10
+    let friendsConst = "friends"
+    let followersConst = "followers"
+    let groupsConst = "groups"
+    let photosConst = "photos"
+    let videosConst = "videos"
+    let audiosConst = "audios"
+    let giftsConst = "gifts"
+    let docsConst = "docs"
+    let randomConst : UInt32 = 100
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +70,13 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 89/255.0, green: 125/255.0, blue: 163/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor = navigationBarColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         self.navigationController?.navigationBar.tintColor = UIColor.white
     }
 
     func randomName() {
         
-        let nameArray = ["Ivan", "Anton", "Vlad"]
         nameLabel.text = nameArray[Int(arc4random_uniform(UInt32(nameArray.count)))]
         navigationItem.title = nameLabel.text
         nameLabel.sizeToFit()
@@ -68,7 +85,6 @@ class ViewController: UIViewController {
     
     func randomSurname() {
         
-        let surnameArray = ["Ivanov","Petrov","Sidorov"]
         surnameLabel.text = surnameArray[Int(arc4random_uniform(UInt32(surnameArray.count)))]
         surnameLabel.sizeToFit()
         
@@ -76,7 +92,6 @@ class ViewController: UIViewController {
     
     func randomAge() {
         
-        let ageArray = ["18 years old,", "21 years old,", "35 years old,"]
         ageLabel.text = ageArray[Int(arc4random_uniform(UInt32(ageArray.count)))]
         ageLabel.sizeToFit()
         
@@ -84,7 +99,6 @@ class ViewController: UIViewController {
     
     func randomLocation() {
         
-        let locationArray = ["Kirov", "Kazan", "Moscow"]
         locationLabel.text = locationArray[Int(arc4random_uniform(UInt32(locationArray.count)))]
         locationLabel.sizeToFit()
         
@@ -97,54 +111,51 @@ class ViewController: UIViewController {
         let color = UIColor.black
 
         
-        let friends = NSAttributedString(string: "\(arc4random_uniform(100)) friends",
+        let friends = NSAttributedString(string: "\(arc4random_uniform(randomConst)) \(friendsConst)",
                                                          attributes: [NSForegroundColorAttributeName : color, NSParagraphStyleAttributeName:paragraphStyle])
         friendsCount.setAttributedTitle(friends, for: .normal)
         
-        let followers = NSAttributedString(string: "\(arc4random_uniform(100)) followers",
+        let followers = NSAttributedString(string: "\(arc4random_uniform(randomConst)) \(followersConst)",
             attributes: [NSForegroundColorAttributeName : color, NSParagraphStyleAttributeName:paragraphStyle ])
         followersCount.setAttributedTitle(followers, for: .normal)
         
-        let groups = NSAttributedString(string: "\(arc4random_uniform(100)) groups",
+        let groups = NSAttributedString(string: "\(arc4random_uniform(randomConst)) \(groupsConst)",
             attributes: [NSForegroundColorAttributeName : color, NSParagraphStyleAttributeName:paragraphStyle])
         groupsCount.setAttributedTitle(groups, for: .normal)
         
-        let photos = NSAttributedString(string: "\(arc4random_uniform(100)) photos",
+        let photos = NSAttributedString(string: "\(arc4random_uniform(randomConst)) \(photosConst)",
             attributes: [NSForegroundColorAttributeName : color, NSParagraphStyleAttributeName:paragraphStyle])
         photosCount.setAttributedTitle(photos, for: .normal)
         
-        let videos = NSAttributedString(string: "\(arc4random_uniform(100)) videos",
+        let videos = NSAttributedString(string: "\(arc4random_uniform(randomConst)) \(videosConst)",
             attributes: [NSForegroundColorAttributeName : color, NSParagraphStyleAttributeName:paragraphStyle])
         videoCount.setAttributedTitle(videos, for: .normal)
         
-        let audios = NSAttributedString(string: "\(arc4random_uniform(100)) audios",
+        let audios = NSAttributedString(string: "\(arc4random_uniform(randomConst)) \(audiosConst)",
             attributes: [NSForegroundColorAttributeName : color, NSParagraphStyleAttributeName:paragraphStyle])
         audioCount.setAttributedTitle(audios, for: .normal)
         
-        let gifts = NSAttributedString(string: "\(arc4random_uniform(100)) gifts",
+        let gifts = NSAttributedString(string: "\(arc4random_uniform(randomConst)) \(giftsConst)",
             attributes: [NSForegroundColorAttributeName : color, NSParagraphStyleAttributeName:paragraphStyle])
         giftsCount.setAttributedTitle(gifts, for: .normal)
         
-        let docs = NSAttributedString(string: "\(arc4random_uniform(100)) docs",
+        let docs = NSAttributedString(string: "\(arc4random_uniform(randomConst)) \(docsConst)",
             attributes: [NSForegroundColorAttributeName : color, NSParagraphStyleAttributeName:paragraphStyle ])
         documentsCount.setAttributedTitle(docs, for: .normal)
 
     }
     
-    func randomNumber(){
-        
-    }
     
     func avatarCorners() {
-        avatar.layer.cornerRadius = 10
+        avatar.layer.cornerRadius = avatarCornersMultiply
         avatar.roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 50)
     }
     
     func bottomAboutScrollBorder() {
         
         let border = CALayer()
-        border.backgroundColor = UIColor.init(red: 184/255.0, green: 184/255.0, blue:184/255.0, alpha: 1.0).cgColor
-        border.frame = CGRect(x: 0, y: aboutScroll.frame.height - 0.5, width: aboutScroll.frame.width, height: 0.5)
+        border.backgroundColor = borderColor
+        border.frame = CGRect(x: 0, y: aboutScroll.frame.height - borderThickness, width: aboutScroll.frame.width, height: borderThickness)
         aboutScroll.layer.addSublayer(border)
         
     }
@@ -152,8 +163,8 @@ class ViewController: UIViewController {
     func topAboutScrollBorder() {
         
         let border = CALayer()
-        border.backgroundColor = UIColor.init(red: 184/255.0, green: 184/255.0, blue:184/255.0, alpha: 1.0).cgColor
-        border.frame = CGRect(x: 0, y: 0, width: aboutScroll.frame.width, height: 0.5)
+        border.backgroundColor = borderColor
+        border.frame = CGRect(x: 0, y: 0, width: aboutScroll.frame.width, height: borderThickness)
         aboutScroll.layer.addSublayer(border)
 
     }
@@ -161,8 +172,8 @@ class ViewController: UIViewController {
     func bottomPhotoScrollBorder() {
         
         let border = CALayer()
-        border.backgroundColor = UIColor.init(red: 184/255.0, green: 184/255.0, blue:184/255.0, alpha: 1.0).cgColor
-        border.frame = CGRect(x: 0, y: photoScroll.frame.height - 0.5, width: photoScroll.frame.width, height: 0.5)
+        border.backgroundColor = borderColor
+        border.frame = CGRect(x: 0, y: photoScroll.frame.height - borderThickness, width: photoScroll.frame.width, height: borderThickness)
         
         photoScroll.layer.addSublayer(border)
         
@@ -170,8 +181,8 @@ class ViewController: UIViewController {
     
     func photoButtonBorder() {
         let border = CALayer()
-        border.backgroundColor = UIColor.init(red: 184/255.0, green: 184/255.0, blue:184/255.0, alpha: 1.0).cgColor
-        border.frame = CGRect(x: photoButton.frame.width - 0.5, y: 0, width: 0.5, height: photoButton.frame.height)
+        border.backgroundColor = borderColor
+        border.frame = CGRect(x: photoButton.frame.width - borderThickness, y: 0, width: borderThickness, height: photoButton.frame.height)
         
         photoButton.layer.addSublayer(border)
     }
@@ -179,8 +190,8 @@ class ViewController: UIViewController {
     func noteButtonBorder() {
         
         let border = CALayer()
-        border.backgroundColor = UIColor.init(red: 184/255.0, green: 184/255.0, blue:184/255.0, alpha: 1.0).cgColor
-        border.frame = CGRect(x: noteButton.frame.width - 0.5, y: 0, width: 0.5, height: noteButton.frame.height)
+        border.backgroundColor = borderColor
+        border.frame = CGRect(x: noteButton.frame.width - borderThickness, y: 0, width: borderThickness, height: noteButton.frame.height)
         
         noteButton.layer.addSublayer(border)
         
