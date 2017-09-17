@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  TestSingleViewAppProject
+//  VKDesign(11September)
 //
-//  Created by Ildar Zalyalov on 11.09.17.
-//  Copyright © 2017 ru.itisIosLab. All rights reserved.
+//  Created by BLVCK on 11/09/2017.
+//  Copyright © 2017 blvvvck production. All rights reserved.
 //
 
 import UIKit
