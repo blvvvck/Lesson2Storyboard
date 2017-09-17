@@ -131,10 +131,6 @@ class ViewController: UIViewController {
 
     }
     
-    func randomNumber(){
-        
-    }
-    
     func avatarCorners() {
         avatar.layer.cornerRadius = 10
         avatar.roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 50)
