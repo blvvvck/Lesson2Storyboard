@@ -145,7 +145,6 @@ class ViewController: UIViewController {
 
     }
     
-    
     func avatarCorners() {
         avatar.layer.cornerRadius = avatarCornersMultiply
         avatar.roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 50)
