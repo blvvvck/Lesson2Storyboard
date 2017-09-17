@@ -34,8 +34,8 @@ class ViewController: UIViewController {
     let nameArray = ["Ivan", "Anton", "Vlad"]
     let ageArray = ["18 years old,", "21 years old,", "35 years old,"]
     let locationArray = ["Kirov", "Kazan", "Moscow"]
-    let borderThickness : CGFloat = 0.5
-    let avatarCornersMultiply : CGFloat = 10
+    let borderThickness: CGFloat = 0.5
+    let avatarCornersMultiply: CGFloat = 10
     let friendsConst = "friends"
     let followersConst = "followers"
     let groupsConst = "groups"
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     let audiosConst = "audios"
     let giftsConst = "gifts"
     let docsConst = "docs"
-    let randomConst : UInt32 = 100
+    let randomConst: UInt32 = 100
     
     
     override func viewDidLoad() {
